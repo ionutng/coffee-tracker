@@ -1,4 +1,4 @@
-export interface Records {
+export interface Record {
     id: number;
     quantity: number;
     date: string;
