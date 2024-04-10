@@ -37,7 +37,7 @@ export class RecordService {
   }
 
   updateRecord(record: Record): Observable<any> {
-    return this.httpClient.put(this.apiURL, record, this.httpOptions)
+    return this.httpClient.put(`${this.apiURL}/${record.id}`, record, this.httpOptions)
       .pipe(
         catchError(this.handleError<any>('updateRecord'))
       );

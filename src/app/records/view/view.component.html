@@ -1,1 +1,13 @@
-<p>view works!</p>
+<div class="my-5 d-flex justify-content-center">
+    <div>
+        <h2 class="text-center">Record's details</h2>
+        <hr width="250px">
+        
+        <div class="border border-primary-subtle rounded p-3 mb-3">
+            <p><strong>Id: </strong>{{record.id}}</p>
+            <p><strong>Date: </strong>{{record.date}}</p>
+            <p><strong>Quantity: </strong>{{record.quantity}}</p>
+        </div>
+        <a routerLink="/records/index" class="btn btn-primary float-end">Back</a>
+    </div>
+</div>

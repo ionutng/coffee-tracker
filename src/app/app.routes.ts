@@ -3,6 +3,7 @@ import { IndexComponent } from './records/index/index.component';
 import { ViewComponent } from './records/view/view.component';
 import { CreateComponent } from './records/create/create.component';
 import { EditComponent } from './records/edit/edit.component';
+import { DeleteComponent } from './records/delete/delete.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'records/index', pathMatch: 'full'},
@@ -11,4 +12,6 @@ export const routes: Routes = [
     { path: 'records/:id/view', component: ViewComponent},
     { path: 'records/create', component: CreateComponent},
     { path: 'records/:id/edit', component: EditComponent},
+    { path: 'records/:id/delete', component: DeleteComponent},
+
 ];

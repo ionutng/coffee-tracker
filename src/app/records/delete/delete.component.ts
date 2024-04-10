@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
 import { RecordService } from '../record.service';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Record } from '../record';
 
 @Component({
-  selector: 'app-view',
+  selector: 'app-delete',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './view.component.html',
-  styleUrl: './view.component.css'
+  templateUrl: './delete.component.html',
+  styleUrl: './delete.component.css'
 })
-export class ViewComponent implements OnInit {
+export class DeleteComponent implements OnInit {
   record!: Record;
 
   ngOnInit(): void {
@@ -23,7 +23,14 @@ export class ViewComponent implements OnInit {
     });
   }
 
+  deleteRecord(id: number): void {
+    this.recordService.deleteRecord(id).subscribe(() => {
+      this.router.navigate(['/records/index']);
+    });
+  }
+
   constructor(
+    private recordService: RecordService,
     private route: ActivatedRoute,
-    private recordService: RecordService) { }
+    private router: Router) { }
 }

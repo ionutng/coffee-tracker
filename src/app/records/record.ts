@@ -1,5 +1,5 @@
 export interface Record {
-    id: number;
-    quantity: number;
+    id?: number;
     date: string;
+    quantity: number;
 }

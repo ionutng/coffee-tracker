@@ -1,1 +1,26 @@
-<p>index works</p>
+<div class="container">
+    <h1>List of Records</h1>
+    <a routerLink="/records/create" class="btn btn-success mb-2">Create New Record</a>
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Quantity</th>
+                <th width="220px">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let record of records" class="align-middle">
+                <td>{{record.id}}</td>
+                <td>{{record.date}}</td>
+                <td>{{record.quantity}} cups</td>
+                <td class="d-flex justify-content-center gap-2">
+                    <a [routerLink]="['/records/', record.id, 'view']" class="btn btn-primary">View</a>
+                    <a [routerLink]="['/records/', record.id, 'edit']" class="btn btn-warning">Edit</a>
+                    <a [routerLink]="['/records/', record.id, 'delete']" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
