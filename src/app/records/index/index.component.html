@@ -4,9 +4,9 @@
     <table class="table table-bordered text-center">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Date</th>
-                <th>Quantity</th>
+                <th style="cursor: pointer" (click)="filterRecords('id')">ID</th>
+                <th style="cursor: pointer" (click)="filterRecords('date')">Date</th>
+                <th style="cursor: pointer" (click)="filterRecords('quantity')">Quantity</th>
                 <th width="220px">Action</th>
             </tr>
         </thead>

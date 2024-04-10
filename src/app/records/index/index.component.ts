@@ -31,4 +31,20 @@ export class IndexComponent implements OnInit {
       this.records = records;
     });
   }
+
+  filterRecords(text: string): void {
+    if (text === 'date') {
+      this.records.sort((a, b) => {
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      });
+    } else if (text === 'quantity') {
+      this.records.sort((a, b) => {
+        return b.quantity - a.quantity;
+      });
+    } else if (text === 'id') {
+      this.records.sort((a, b) => {
+        return b.id! - a.id!;
+      });
+    }
+  }
 }

@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RecordService } from '../record.service';
 import { Record } from '../record';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, NgIf],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css'
 })
@@ -16,8 +17,8 @@ export class EditComponent implements OnInit{
   record!: Record;
 
   editRecordForm = new FormGroup({
-    quantity: new FormControl(0),
-    date: new FormControl(''),
+    date: new FormControl('', Validators.required),
+    quantity: new FormControl(0, [Validators.required, Validators.pattern(/^-?\d*(\.\d+)?$/)])
   });
 
   ngOnInit(): void {
@@ -33,8 +34,18 @@ export class EditComponent implements OnInit{
   }
 
   updateRecord() {
+    if (this.editRecordForm.invalid) {
+      return;
+    }
+
     const date = this.editRecordForm.value.date ?? this.record.date;
+
+    if (new Date(date) > new Date()) {
+      return;
+    }
+
     const quantity = Number(this.editRecordForm.value.quantity) ?? this.record.quantity;
+
     const record: Record = {
       id: this.id,
       date: date,

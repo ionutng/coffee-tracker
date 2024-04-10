@@ -7,11 +7,23 @@
             <div class="mb-3">
                 <label for="date" class="form-label fw-bold">Date</label>
                 <input id="date" type="date" formControlName="date" class="form-control">
+                <div 
+                    *ngIf="addRecordForm.controls.date.invalid && addRecordForm.controls.date.touched" 
+                    class="text-danger"
+                    >
+                    Date is required
+                </div>
             </div>
             
             <div class="mb-3">
                 <label for="quantity" class="form-label fw-bold">Quantity</label>
                 <input id="quantity" type="text" formControlName="quantity" class="form-control">
+                <div 
+                    *ngIf="addRecordForm.controls.quantity.invalid && addRecordForm.controls.quantity.touched" 
+                    class="text-danger"
+                    >
+                    Quantity is required and must be a number
+                </div>
             </div>
             
             <div class="d-flex align-items-center justify-content-between">
